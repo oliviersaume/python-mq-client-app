@@ -37,4 +37,4 @@ ENV QUEUE_MANAGER_NAME="TESTQMGR"
 ENV CHANNEL_NAME="channel" 
 ENV QUEUE_NAME="TESTQ"
 
-CMD ["python","mqfeed.py"]
+# CMD ["python","mqfeed.py"]
