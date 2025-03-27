@@ -1,0 +1,15 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY . /app
+
+RUN PIP install -r requirement
+
+ENV HOST_NAME="127.0.0.1"
+ENV QUEUE_MANAGER_PORT_NUMBER="1415"
+ENV QUEUE_MANAGER_NAME="TESTQMGR"  
+ENV CHANNEL_NAME="channel" 
+ENV QUEUE_NAME="TESTQ"
+
+CMD ["python","mqfeed.py"]
