@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN PIP install -r requirement
+RUN PIP install -r requirements.txt
 
 ENV HOST_NAME="127.0.0.1"
 ENV QUEUE_MANAGER_PORT_NUMBER="1415"
