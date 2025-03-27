@@ -26,9 +26,8 @@ rm -rf ${MQ_PACKAGE}
 
 # Set environment variables for MQ runtime
 ENV PATH="${MQ_INSTALL_DIR}/bin:${PATH}"
-ENV LD_LIBRARY_PATH="${MQ_INSTALL_DIR}/lib:${LD_LIBRARY_PATH}"
-
-RUN dspmqver
+# ENV LD_LIBRARY_PATH="${MQ_INSTALL_DIR}/lib:${LD_LIBRARY_PATH}"
+ENV LD_LIBRARY_PATH="${MQ_INSTALL_DIR}/lib"
 
 RUN pip install -r requirements.txt
 
