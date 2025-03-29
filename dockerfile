@@ -27,7 +27,7 @@ rm -rf ${MQ_PACKAGE}
 # Set environment variables for MQ runtime
 ENV PATH="${MQ_INSTALL_DIR}/bin:${PATH}"
 # ENV LD_LIBRARY_PATH="${MQ_INSTALL_DIR}/lib:${LD_LIBRARY_PATH}"
-ENV LD_LIBRARY_PATH="${MQ_INSTALL_DIR}/lib"
+ENV LD_LIBRARY_PATH="${MQ_INSTALL_DIR}/lib64:${MQ_INSTALL_DIR}/lib"
 
 RUN pip install -r requirements.txt
 
@@ -37,4 +37,4 @@ ENV QUEUE_MANAGER_NAME="TESTQMGR"
 ENV CHANNEL_NAME="channel" 
 ENV QUEUE_NAME="TESTQ"
 
-# CMD ["python","mqfeed.py"]
+CMD ["python","mqfeed.py"]
