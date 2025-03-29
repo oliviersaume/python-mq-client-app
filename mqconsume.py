@@ -45,6 +45,7 @@ while keep_running:
         message = queue.get(None, md, gmo)
 
         # Process the message here..
+        print(f"Message received: {message}")
 
         # Reset the MsgId, CorrelId & GroupId so that we can reuse
         # the same 'md' object again.
@@ -55,6 +56,7 @@ while keep_running:
     except pymqi.MQMIError as e:
         if e.comp == pymqi.CMQC.MQCC_FAILED and e.reason == pymqi.CMQC.MQRC_NO_MSG_AVAILABLE:
             # No messages, that is OK, we can ignore it.
+            print("No more mesage ... back to getwait mode")
             pass
         else:
             # Some other error condition.

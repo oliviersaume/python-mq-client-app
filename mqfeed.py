@@ -30,8 +30,8 @@ try:
       print(f"Message sent: {message}")
       qmgr.commit()
       print("Start sleeping ...")
-      time.sleep(30) # Sleep for 3 seconds
-      print("Wake up after 30 seconds")    
+      time.sleep(10) # Sleep for 10 seconds
+      print("Wake up after 10 seconds")    
     
     
     # Close the queue and disconnect - we should not reach this anymore ...

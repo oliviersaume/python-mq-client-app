@@ -2,7 +2,7 @@
 
 # python-mq-app-feed
 
-This container runs a Python script that will put a message a queue. That's it.
+This container runs a Python script that will put a message a queue. That's it. It will repeat that operation every 10 seconds (TO DO : implement a variable to allow different time interval)
 
 You need to pass some values using environment variables. Here is the list with a small description of each variable :
 HOST_NAME: the host name where your queue manager is running ("127.0.0.1","localhost","192.168.1.52",...)
@@ -13,10 +13,10 @@ QUEUE_NAME : The target queue (local, alias, ...)
 
 
 To build the image :
- docker build -t python-mq-app-feed -f .\dockerfile-mqfeed .
+ docker build -t <yourdockerhubid>/python-mq-app-feed -f .\dockerfile-mqfeed .
 
 To run the container :
- docker run -e HOST_NAME="localhost" -e QUEUE_MANAGER_PORT_NUMBER="1515" -e QUEUE_MANAGER_NAME="QMGRA" -e CHANNEL_NAME="MQCONSUMER" -e QUEUE_NAME="mqConsumer001" python-mq-app-feed
+ docker run -e HOST_NAME="localhost" -e QUEUE_MANAGER_PORT_NUMBER="1515" -e QUEUE_MANAGER_NAME="QMGRA" -e CHANNEL_NAME="MQCONSUMER" -e QUEUE_NAME="mqConsumer001" <yourdockerhubid>/python-mq-app-feedpython-mq-app-feed
 
 Common errors :
 An error occurred: MQI Error. Comp: 2, Reason 2538: FAILED: MQRC_HOST_NOT_AVAILABLE
@@ -26,3 +26,8 @@ It could be that the port number or the value of the host are incorrect. Make su
 
 # python-mq-app-consume
 
+This container runs a Python script that will get  messages from a queue and display it. That's it.
+If no message is available, it will just wait for new message(s)
+
+To build the image :
+ docker build -t <yourdockerhubid>/python-mq-app-consume -f .\dockerfile-mqconsume .
