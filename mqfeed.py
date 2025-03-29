@@ -1,5 +1,6 @@
 import pymqi
 import os
+import time
 
 def get_env_variable(var_name):
     return os.getenv(var_name)
@@ -22,13 +23,18 @@ try:
     
     # Open the queue for putting messages
     queue = pymqi.Queue(qmgr, queue_name)
+    while True:
+      # Put a message
+      message = "Hello, IBM MQ!"
+      queue.put(message)
+      print(f"Message sent: {message}")
+      qmgr.commit()
+      print("Start sleeping ...")
+      time.sleep(30) # Sleep for 3 seconds
+      print("Wake up after 30 seconds")    
     
-    # Put a message
-    message = "Hello, IBM MQ!"
-    queue.put(message)
-    print(f"Message sent: {message}")
     
-    # Close the queue and disconnect
+    # Close the queue and disconnect - we should not reach this anymore ...
     queue.close()
     qmgr.disconnect()
     print("Disconnected from IBM MQ.")
