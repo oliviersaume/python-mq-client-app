@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mq-feed-deployment
+  namespace: mq-client-apps
+  labels:
+    app: mqfeed-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mqfeed-app
+  template:
+    metadata:
+      labels:
+        app: mqfeed-app
+    spec:
+      containers:
+      - name: mqfeed-app
+        image: osaume/python-mq-app-feed:latest
+        env:
+        - name: HOST_NAME
+          value: "192.168.1.52"
+        - name: QUEUE_MANAGER_PORT_NUMBER
+          value: "1515"
+        - name: QUEUE_MANAGER_NAME
+          value: "QMGRA"       
+        - name: CHANNEL_NAME
+          value: "MQCONSUMER"
+        - name: QUEUE_NAME
+          value: "mqConsumer001"                                      
